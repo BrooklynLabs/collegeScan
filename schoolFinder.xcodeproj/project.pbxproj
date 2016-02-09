@@ -16,8 +16,8 @@
 		3191A7D31C69790600165E34 /* SavedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7D21C69790600165E34 /* SavedVC.swift */; };
 		3191A7D51C69796D00165E34 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7D41C69796D00165E34 /* MapVC.swift */; };
 		3191A7D71C697E0100165E34 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7D61C697E0100165E34 /* DataManager.swift */; };
-		3191A7D91C697E4C00165E34 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7D81C697E4C00165E34 /* Keys.swift */; };
 		3191A7DB1C697FD700165E34 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3191A7DA1C697FD700165E34 /* .gitignore */; };
+		3191A7DF1C6980B100165E34 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7DE1C6980B100165E34 /* Item.swift */; };
 		D32828A38C6AEEF2955884FE /* Pods_schoolFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAB20622ED7B22A7F5583E4 /* Pods_schoolFinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,8 +55,8 @@
 		3191A7D21C69790600165E34 /* SavedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedVC.swift; sourceTree = "<group>"; };
 		3191A7D41C69796D00165E34 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		3191A7D61C697E0100165E34 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		3191A7D81C697E4C00165E34 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		3191A7DA1C697FD700165E34 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3191A7DE1C6980B100165E34 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8FAB20622ED7B22A7F5583E4 /* Pods_schoolFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_schoolFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79FE81F7685EB27FFC511BA /* Pods-schoolFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schoolFinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-schoolFinder/Pods-schoolFinder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,14 +122,13 @@
 		3191A7A11C69771D00165E34 /* schoolFinder */ = {
 			isa = PBXGroup;
 			children = (
-				3191A7D81C697E4C00165E34 /* Keys.swift */,
 				3191A7A21C69771D00165E34 /* AppDelegate.swift */,
-				3191A7D41C69796D00165E34 /* MapVC.swift */,
-				3191A7D21C69790600165E34 /* SavedVC.swift */,
+				3191A7DE1C6980B100165E34 /* Item.swift */,
+				3191A7DC1C69803700165E34 /* Data */,
+				3191A7DD1C69803E00165E34 /* ViewControllers */,
 				3191A7A91C69771D00165E34 /* Assets.xcassets */,
 				3191A7AB1C69771D00165E34 /* LaunchScreen.storyboard */,
 				3191A7AE1C69771D00165E34 /* Info.plist */,
-				3191A7D61C697E0100165E34 /* DataManager.swift */,
 			);
 			path = schoolFinder;
 			sourceTree = "<group>";
@@ -150,6 +149,23 @@
 				3191A7C41C69771D00165E34 /* Info.plist */,
 			);
 			path = schoolFinderUITests;
+			sourceTree = "<group>";
+		};
+		3191A7DC1C69803700165E34 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3191A7D61C697E0100165E34 /* DataManager.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		3191A7DD1C69803E00165E34 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3191A7D41C69796D00165E34 /* MapVC.swift */,
+				3191A7D21C69790600165E34 /* SavedVC.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		3F0DF2B5338B188B4FB61FB6 /* Pods */ = {
@@ -348,7 +364,7 @@
 				3191A7D71C697E0100165E34 /* DataManager.swift in Sources */,
 				3191A7D51C69796D00165E34 /* MapVC.swift in Sources */,
 				3191A7A31C69771D00165E34 /* AppDelegate.swift in Sources */,
-				3191A7D91C697E4C00165E34 /* Keys.swift in Sources */,
+				3191A7DF1C6980B100165E34 /* Item.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

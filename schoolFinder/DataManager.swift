@@ -9,7 +9,10 @@
 import Foundation
 
 class DataManager: NSObject {
-    var url: String = "https://api.data.gov/ed/collegescorecard/v1/schools"
-    var keys = Keys()
+    var url: String = "ftp://ftp.cde.ca.gov/demo/schlname/pubschls.txt"
+    
+    func downloadSchoolsData(zip: Int, distance: Int) -> [Item] {
+        
+    }
     
 }
