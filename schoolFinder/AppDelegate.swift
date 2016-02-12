@@ -19,16 +19,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        let feedNVC = UINavigationController()
-        feedNVC.viewControllers = [MapViewController()]
-        feedNVC.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.MostViewed, tag: 1)
+        let browse = UINavigationController()
+        browse.viewControllers = [BrowseController()]
+        browse.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.MostViewed, tag: 1)
+
+        let search = UINavigationController()
+        search.viewControllers = [SearchViewController()]
+        search.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Search, tag: 3)
+
         
-        let starNVC = UINavigationController()
-        starNVC.viewControllers = [SavedViewController()]
-        starNVC.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 2)
+        let saved = UINavigationController()
+        saved.viewControllers = [SavedViewController()]
+        saved.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 2)
+        
+        let settings = UINavigationController()
+        settings.viewControllers = [SettingsVC()]
+        settings.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.More, tag: 3)
         
         tabBar = UITabBarController()
-        tabBar.viewControllers = [feedNVC, starNVC]
+        tabBar.viewControllers = [browse, search, saved, settings]
         
         self.window!.rootViewController = tabBar
         self.window!.makeKeyAndVisible()

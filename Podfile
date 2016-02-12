@@ -10,7 +10,9 @@ target 'schoolFinder' do
     pod 'ChameleonFramework/Swift'
     pod 'FBSDKCoreKit'
     pod 'AsyncDisplayKit'
-    pod 'SwiftCSV'
+    pod 'AsyncSwift'
+    pod 'StatefulViewController', '~> 1.0'
+    pod 'Eureka', '~> 1.3'
 end
 
 target 'schoolFinderTests' do
