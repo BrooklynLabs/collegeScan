@@ -17,7 +17,7 @@ class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Browse Schools"
         tableView = ASTableView(frame: view.bounds)
         tableView.asyncDataSource = self
         tableView.asyncDelegate = self
@@ -42,7 +42,7 @@ class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
 //        Init a queryVC
         let queryVCtoPush = QueryViewController(params: stateQueryDict)
         
-        self.navigationController?.pushViewController(queryVCtoPush, animated: true)
+        self.navigationController!.pushViewController(queryVCtoPush, animated: true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -15,7 +15,7 @@ class SchoolNode: ASCellNode {
     var subtitleNode: ASTextNode
     var typeNode: ASTextNode
     
-    init!(result: Result) {
+    init!(result: SchoolViewModel) {
         titleNode = ASTextNode()
         subtitleNode = ASTextNode()
         typeNode = ASTextNode()
@@ -30,16 +30,16 @@ class SchoolNode: ASCellNode {
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5.0, left: 10.0, bottom: 5.0, right: 10.0), child: verticalNodeStack)
     }
     
-    func setupSubNodesWithItem(result: Result) {
-        titleNode.attributedString = NSAttributedString(string: result.NAME!, attributes: [
+    func setupSubNodesWithItem(result: SchoolViewModel) {
+        titleNode.attributedString = NSAttributedString(string: result.NAME, attributes: [
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             ])
         titleNode.placeholderColor = UIColor.blackColor()
         
-        subtitleNode.attributedString = NSAttributedString(string: result.STATE!, attributes: [
+        subtitleNode.attributedString = NSAttributedString(string: result.SCHOOL_URL, attributes: [
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
             ])
-        typeNode.attributedString = NSAttributedString(string: result.SCHOOL_URL!, attributes: [
+        typeNode.attributedString = NSAttributedString(string: result.CITY, attributes: [
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline),
             NSForegroundColorAttributeName: UIColor.blueColor()
             ])

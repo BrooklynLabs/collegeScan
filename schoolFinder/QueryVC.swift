@@ -14,17 +14,23 @@ import Whisper
 
 class QueryViewController: UIViewController, ASTableViewDataSource, ASTableViewDelegate {
     var apiURL: String = "https://api.data.gov/ed/collegescorecard/v1/schools"
+    var queriedParams: [String: String]
+    
     var tableView: ASTableView!
+    
+//    Helpers
     var dataFields = DataFields()
     var messageHelper = MessageHelper()
-    var queriedParams: [String: String]
+    
+//    For pagination 
+    var results: [SchoolViewModel] = []
+    var paging: Int = 0
     
     init(params: [String: String]) {
         queriedParams = dataFields.print_minimum_properties_with_query(params)
         super.init(nibName: nil, bundle: nil)
         
         title = Array(params.values).first
-        prepareData()
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -33,30 +39,65 @@ class QueryViewController: UIViewController, ASTableViewDataSource, ASTableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView = ASTableView(frame: view.bounds)
         tableView.asyncDataSource = self
         tableView.asyncDelegate = self
         view.addSubview(tableView)
+        
+//        In ViewdidLoad because this calls for a NavigationController call and it doesnt exist in INIT
+        Whisper(messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
+        prepareData { (downloaded) -> Void in
+            self.tableView.reloadData()
+            Silent(self.navigationController!)
+        }
     }
     
-    func prepareData() {
+    func prepareData(completion: (downloaded: Bool) -> Void) {
+        if paging > 0 {
+            queriedParams["page"] = String(paging)
+        }
         Alamofire.request(.GET, apiURL, parameters: queriedParams).responseObject { (response: Response<DataResponse, NSError>) -> Void in
             if let successResponse = response.result.value {
-                print(successResponse)
+                self.results += SchoolViewModel.createViewModels(successResponse.results!)
+                self.paging += 1
+                completion(downloaded: true)
             } else {
+                Whisper(self.messageHelper.errorMessage, to: self.navigationController!, action: .Present)
+                Silent(self.navigationController!, after: 3.0)
                 print(response)
                 print(response.result.error)
+                completion(downloaded: false)
             }
         }
     }
     
     func tableView(tableView: ASTableView, nodeForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
-        return ASCellNode()
+        let resultAtIndexPath = results[indexPath.row]
+        let schoolNode = SchoolNode(result: resultAtIndexPath)
+        
+        return schoolNode
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return results.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: ASTableView, willBeginBatchFetchWithContext context: ASBatchContext) {
+        let previousCount = results.count
+        prepareData { (downloaded) -> Void in
+            if downloaded {
+                Whisper(self.messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
+                Silent(self.navigationController!, after: 2.0)
+
+                let insertRowRange = previousCount..<self.results.count
+                let insertPathsRange = insertRowRange.map( {NSIndexPath(forRow: $0, inSection: 0)} )
+                self.tableView.insertRowsAtIndexPaths(insertPathsRange, withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+        }
     }
     
 }

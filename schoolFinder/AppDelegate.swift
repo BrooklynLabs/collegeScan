@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let browse = UINavigationController()
         browse.viewControllers = [BrowseController()]
-        browse.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.MostViewed, tag: 1)
+        browse.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
 
         let search = UINavigationController()
         search.viewControllers = [SearchViewController()]
