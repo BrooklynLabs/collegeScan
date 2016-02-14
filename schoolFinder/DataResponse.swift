@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class Response: Mappable {
+class DataResponse: Mappable {
     var results: [Result]?
     
     var errors: [Error]?
@@ -25,7 +25,7 @@ class Response: Mappable {
     func mapping(map: Map) {
 //        Error mappings
         errors <- map["errors"]
-        
+        results <- map["results"]
 //        Meta Data mapping
         metadataTotal <- map["metadata.total"]
         metadataPage <- map["metadata.page"]

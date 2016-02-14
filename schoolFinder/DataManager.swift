@@ -12,8 +12,6 @@ import Alamofire
 import Async
 
 class DataManagerVC: UIViewController {
-    var caliURL: String = "https://api.data.gov/ed/collegescorecard/v1/schools"
-    var key = "lcz2bpUX38zm1juJmF8PgtPvRNi6PKC0ecdDoEuX"
     var progressTracker: UIProgressView!
     var startButton: UIButton!
     

@@ -85,6 +85,8 @@ struct DataFields {
     
     let NET_PRICE_CALC_URL =       "school.price_calculator_url"
     
+    var key = "lcz2bpUX38zm1juJmF8PgtPvRNi6PKC0ecdDoEuX"
+    
     static func print_all_properties(mirror: _MirrorType) -> String {
         var exportProperties = "id"
         for i in 1..<mirror.count {
@@ -94,5 +96,21 @@ struct DataFields {
         }
         
         return exportProperties
+    }
+    
+    func print_minimum_properties_with_query(query: [String: String]) -> [String: String] {
+        var propertiesExport = print_minimum_properties()
+        query.forEach { propertiesExport[$0] = $1 }
+        
+        return propertiesExport
+    }
+    
+    func print_minimum_properties() -> [String: String] {
+        let properties = ID + "," + NAME + "," + CITY + "," + SCHOOL_URL + "," + OWNERSHIP
+        return ["fields": properties, "school.operating": "1", "api_key": key]
+    }
+    
+    func operating_only() -> [String: String] {
+        return ["school.operating": "1"]
     }
 }

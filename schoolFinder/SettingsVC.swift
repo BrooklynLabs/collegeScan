@@ -11,8 +11,8 @@ import UIKit
 import SafariServices
 
 class SettingsVC: UITableViewController {
-    var settingItems: [[String]] = [["See Intro Screen Again"], ["AsyncDisplayKit", "EAIntroView", "SnapKit", "DZNEmptyDataSet", "Realm", "Whisper"]]
-    var podURLs: [String]! = ["http://asyncdisplaykit.org", "https://github.com/ealeksandrov/EAIntroView", "https://github.com/SnapKit/SnapKit", "https://github.com/dzenbot/DZNEmptyDataSet", "https://realm.io/", "https://github.com/hyperoslo/Whisper"]
+    var settingItems: [[String]] = [["See Intro Screen Again"], ["AsyncDisplayKit", "EAIntroView", "SnapKit", "DZNEmptyDataSet", "Realm", "Whisper", "AlamoFire", "AlamofireObjectMapper"]]
+    var podURLs: [String]! = ["http://asyncdisplaykit.org", "https://github.com/ealeksandrov/EAIntroView", "https://github.com/SnapKit/SnapKit", "https://github.com/dzenbot/DZNEmptyDataSet", "https://realm.io/", "https://github.com/hyperoslo/Whisper", "https://github.com/Alamofire/Alamofire", "https://github.com/tristanhimmelman/AlamofireObjectMapper"]
     
     override func viewDidLoad() {
         tableView = UITableView(frame: tableView.frame, style: .Grouped)
@@ -58,7 +58,7 @@ class SettingsVC: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if indexPath.section == 0 {
-            
+            print("Do something")
         } else if indexPath.section == 1 {
             let selectedURL = self.podURLs[indexPath.row]
             let svc = SFSafariViewController(URL: NSURL(string: selectedURL)!)

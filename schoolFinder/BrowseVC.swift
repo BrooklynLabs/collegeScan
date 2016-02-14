@@ -7,32 +7,46 @@
 //
 
 import Foundation
-import UIKit
+import AsyncDisplayKit
 
-class BrowseController: UITableViewController {
+class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
+    var tableView: ASTableView!
+    var statesDict: [String: String]!
+    
+    let stateReference = StatesStruct()
     
     override func viewDidLoad() {
-        view.backgroundColor = UIColor.flatWhiteColor()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        let data = DataFields()
-        let mirror = _reflect(data)
-        print(DataFields.print_all_properties(mirror))
+        super.viewDidLoad()
+        
+        tableView = ASTableView(frame: view.bounds)
+        tableView.asyncDataSource = self
+        tableView.asyncDelegate = self
+        view.addSubview(tableView)
+        
+        statesDict = stateReference.stateAbbrev
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    func tableView(tableView: ASTableView, nodeForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
+        let cellNode = ASTextCellNode()
+        cellNode.text = Array(statesDict.keys)[indexPath.row]
+        
+        return cellNode
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
-        cell.textLabel?.text = "Hello"
-        return cell
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let dataFields = DataFields()
+//        Grab the api specific key code for the state selected 'school.state = 1'
+        let stateKeyValue: String = Array(statesDict.values)[indexPath.row]
+        let stateQueryDict = [dataFields.STATE: stateKeyValue]
+        
+//        Init a queryVC
+        let queryVCtoPush = QueryViewController(params: stateQueryDict)
+        
+        self.navigationController?.pushViewController(queryVCtoPush, animated: true)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statesDict.count
     }
     
 }
