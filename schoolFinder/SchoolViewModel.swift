@@ -18,7 +18,7 @@ class SchoolViewModel: NSObject {
     init(school: Result) {
         NAME = "Unknown"
         SCHOOL_URL = "Unknown URL"
-        ID = "unknown ID"
+        ID = "0"
         CITY = "unknown City"
         super.init()
         
@@ -45,6 +45,10 @@ class SchoolViewModel: NSObject {
         
         if school.CITY != nil {
             CITY = school.CITY!
+        }
+        
+        if school.ID != nil {
+            ID = String(school.ID!)
         }
     }
     

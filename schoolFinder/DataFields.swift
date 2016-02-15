@@ -85,17 +85,31 @@ struct DataFields {
     
     let NET_PRICE_CALC_URL =       "school.price_calculator_url"
     
-    var key = "lcz2bpUX38zm1juJmF8PgtPvRNi6PKC0ecdDoEuX"
+    var api_key = "lcz2bpUX38zm1juJmF8PgtPvRNi6PKC0ecdDoEuX"
     
-    static func print_all_properties(mirror: _MirrorType) -> String {
+    func print_all_properties() -> String {
+        let mirrored_self = Mirror(reflecting: self)
         var exportProperties = "id"
-        for i in 1..<mirror.count {
-            let (_, childMirror) = mirror[i]
-            let value = childMirror.value
-            exportProperties += ",\(value)"
+        
+        for (_, attr) in mirrored_self.children.enumerate() {
+            if attr.label != nil && attr.label as String! != "api_key" {
+                exportProperties += "," + String(attr.value)
+            }
         }
+//        for i in 1..<mirror.count {
+//            let (_, childMirror) = mirror[i]
+//            let value = childMirror.value
+//            exportProperties += ",\(value)"
+//        }
         
         return exportProperties
+    }
+
+    func print_all_properties_with_query(query: [String: String]) -> [String: String] {
+        var propertiesExport = ["fields": self.print_all_properties()]
+        query.forEach { propertiesExport[$0] = $1 }
+        
+        return propertiesExport
     }
     
     func print_minimum_properties_with_query(query: [String: String]) -> [String: String] {
@@ -107,7 +121,7 @@ struct DataFields {
     
     func print_minimum_properties() -> [String: String] {
         let properties = ID + "," + NAME + "," + CITY + "," + SCHOOL_URL + "," + OWNERSHIP
-        return ["fields": properties, "school.operating": "1", "api_key": key]
+        return ["fields": properties, "school.operating": "1", "api_key": api_key]
     }
     
     func operating_only() -> [String: String] {

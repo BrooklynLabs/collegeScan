@@ -39,7 +39,7 @@ class SettingsVC: UITableViewController {
         
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.whiteColor()
         cell.textLabel?.text = self.settingItems[indexPath.section][indexPath.row]
         
         if indexPath.section == 1 {

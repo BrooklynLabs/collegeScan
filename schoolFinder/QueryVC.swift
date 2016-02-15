@@ -83,7 +83,11 @@ class QueryViewController: UIViewController, ASTableViewDataSource, ASTableViewD
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let selectedSchool = results[indexPath.row]
+        let selectedSchoolController = SchoolViewController(schoolID: selectedSchool.ID)
         
+        self.navigationController?.pushViewController(selectedSchoolController, animated: true)
     }
     
     func tableView(tableView: ASTableView, willBeginBatchFetchWithContext context: ASBatchContext) {

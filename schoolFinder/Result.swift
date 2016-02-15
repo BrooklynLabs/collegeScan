@@ -11,7 +11,7 @@ import ObjectMapper
 
 class Result: Mappable {
     
-    var ID: String?
+    var ID: Int?
     var NAME: String?
     var CITY: String?
     var STATE: String?
