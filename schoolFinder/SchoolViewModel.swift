@@ -15,7 +15,7 @@ class SchoolViewModel: NSObject {
     var ID: String
     var CITY: String
     
-    init(school: Result) {
+    init(school: QueryResult) {
         NAME = "Unknown"
         SCHOOL_URL = "Unknown URL"
         ID = "0"
@@ -25,7 +25,7 @@ class SchoolViewModel: NSObject {
         setupWithResult(school)
     }
     
-    class func createViewModels(schools: [Result]) -> [SchoolViewModel] {
+    class func createViewModels(schools: [QueryResult]) -> [SchoolViewModel] {
         var viewmodels = [SchoolViewModel]()
         for school in schools {
             viewmodels.append(SchoolViewModel(school: school))
@@ -34,7 +34,7 @@ class SchoolViewModel: NSObject {
         return viewmodels
     }
     
-    func setupWithResult(school: Result) {
+    func setupWithResult(school: QueryResult) {
         if school.NAME != nil {
             NAME = school.NAME!
         }

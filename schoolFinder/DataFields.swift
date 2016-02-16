@@ -96,12 +96,6 @@ struct DataFields {
                 exportProperties += "," + String(attr.value)
             }
         }
-//        for i in 1..<mirror.count {
-//            let (_, childMirror) = mirror[i]
-//            let value = childMirror.value
-//            exportProperties += ",\(value)"
-//        }
-        
         return exportProperties
     }
 
@@ -122,6 +116,10 @@ struct DataFields {
     func print_minimum_properties() -> [String: String] {
         let properties = ID + "," + NAME + "," + CITY + "," + SCHOOL_URL + "," + OWNERSHIP
         return ["fields": properties, "school.operating": "1", "api_key": api_key]
+    }
+    
+    func print_id_query() -> [String: String] {
+        return ["id": "", "api_key": api_key]
     }
     
     func operating_only() -> [String: String] {

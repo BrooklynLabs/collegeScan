@@ -56,7 +56,7 @@ class QueryViewController: UIViewController, ASTableViewDataSource, ASTableViewD
         if paging > 0 {
             queriedParams["page"] = String(paging)
         }
-        Alamofire.request(.GET, apiURL, parameters: queriedParams).responseObject { (response: Response<DataResponse, NSError>) -> Void in
+        Alamofire.request(.GET, apiURL, parameters: queriedParams).responseObject { (response: Response<QueryResponse, NSError>) -> Void in
             if let successResponse = response.result.value {
                 self.results += SchoolViewModel.createViewModels(successResponse.results!)
                 self.paging += 1

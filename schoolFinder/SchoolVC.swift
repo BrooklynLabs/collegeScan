@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Alamofire
-import AlamofireObjectMapper
 import Whisper
 
 class SchoolViewController: UIViewController {
@@ -20,14 +18,20 @@ class SchoolViewController: UIViewController {
     var messageHelper = MessageHelper()
     
     var selectedSchoolID: String
+    var selectedSchool: Result!
+    
+    var schoolTable: UITableView!
+    var schoolPropertyKey: [String] = []
+    var schoolPropertyValue: [String] = []
     
     init(schoolID: String) {
         selectedSchoolID = schoolID
-        queriedParams = dataFields.print_all_properties_with_query(["id": schoolID])
+        queriedParams = dataFields.print_id_query()
+        queriedParams["id"] = schoolID
         super.init(nibName: nil, bundle: nil)
         
-        print(queriedParams)
         title = "School"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: UIBarButtonItemStyle.Plain, target: self, action: "openOptionsMenu:")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -36,10 +40,15 @@ class SchoolViewController: UIViewController {
     
     override func viewDidLoad() {
         view.backgroundColor = UIColor.flatWhiteColorDark()
+        prepareTable()
         
         if selectedSchoolID == "0" {
             Whisper(messageHelper.schoolErrorMessage, to: self.navigationController!, action: .Present)
             Silent(self.navigationController!, after: 4.0)
+        } else {
+            prepareData({ (downloaded) -> Void in
+                self.schoolTable.reloadData()
+            })
         }
     }
     
