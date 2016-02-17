@@ -16,6 +16,7 @@
 		312EB5061C7386EA00426543 /* QueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5051C7386EA00426543 /* QueryResult.swift */; };
 		312EB5081C74CC9700426543 /* ProfileDataCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5071C74CC9700426543 /* ProfileDataCellNode.swift */; };
 		312EB50F1C74EA7E00426543 /* FieldTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB50E1C74EA7E00426543 /* FieldTransform.swift */; };
+		312EB5111C75178900426543 /* JYTextCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5101C75178900426543 /* JYTextCellNode.swift */; };
 		3191A7A31C69771D00165E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7A21C69771D00165E34 /* AppDelegate.swift */; };
 		3191A7AA1C69771D00165E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3191A7A91C69771D00165E34 /* Assets.xcassets */; };
 		3191A7AD1C69771D00165E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3191A7AB1C69771D00165E34 /* LaunchScreen.storyboard */; };
@@ -67,6 +68,7 @@
 		312EB5051C7386EA00426543 /* QueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResult.swift; sourceTree = "<group>"; };
 		312EB5071C74CC9700426543 /* ProfileDataCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataCellNode.swift; sourceTree = "<group>"; };
 		312EB50E1C74EA7E00426543 /* FieldTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldTransform.swift; sourceTree = "<group>"; };
+		312EB5101C75178900426543 /* JYTextCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JYTextCellNode.swift; sourceTree = "<group>"; };
 		3191A79F1C69771D00165E34 /* schoolFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = schoolFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3191A7A21C69771D00165E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3191A7A91C69771D00165E34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				3191A7F61C6E9A1C00165E34 /* SchoolNode.swift */,
+				312EB5101C75178900426543 /* JYTextCellNode.swift */,
 				312EB5071C74CC9700426543 /* ProfileDataCellNode.swift */,
 				312EB50E1C74EA7E00426543 /* FieldTransform.swift */,
 			);
@@ -451,6 +454,7 @@
 				3191A7F71C6E9A1C00165E34 /* SchoolNode.swift in Sources */,
 				3191A7EA1C6D4E9100165E34 /* DataFields.swift in Sources */,
 				312EB5081C74CC9700426543 /* ProfileDataCellNode.swift in Sources */,
+				312EB5111C75178900426543 /* JYTextCellNode.swift in Sources */,
 				312EB5041C7386D600426543 /* QueryResponse.swift in Sources */,
 				312EB4FC1C72654C00426543 /* SchoolVC.swift in Sources */,
 				3191A7D71C697E0100165E34 /* DataManager.swift in Sources */,

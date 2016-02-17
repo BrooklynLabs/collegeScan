@@ -50,8 +50,7 @@ class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
     }
     
     func tableView(tableView: ASTableView, nodeForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
-        let cellNode = ASTextCellNode()
-        cellNode.text = Array(optionsDict.keys)[indexPath.row]
+        let cellNode = JYTextCellNode(text: Array(optionsDict.keys)[indexPath.row])
         
         return cellNode
     }
@@ -60,7 +59,6 @@ class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
 //        Grab the api specific key code for the selected browse field
         let queriedValue: String = Array(optionsDict.values)[indexPath.row]
         let queriedParam = [selectedFieldKey: queriedValue]
-        print(queriedParam)
         
 //        Init a queryVC
         let queryVCtoPush = QueryViewController(params: queriedParam)
