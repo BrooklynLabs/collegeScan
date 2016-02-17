@@ -16,6 +16,8 @@ class QueryResult: Mappable {
     var CITY: String?
     var STATE: String?
     var ZIP_CODE: String?
+    var CARNEGIE_BASIC: String?
+    var CARNEGIE_SIZE_SETTING: String?
     var SCHOOL_URL: String?
     var OWNERSHIP: String?
     var LOCALE: String?

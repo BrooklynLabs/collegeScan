@@ -10,10 +10,8 @@ target 'schoolFinder' do
     pod 'ChameleonFramework/Swift'
     pod 'FBSDKCoreKit'
     pod 'AsyncDisplayKit'
-    pod 'AsyncSwift'
-    pod 'StatefulViewController', '~> 1.0'
     pod 'Eureka', '~> 1.3'
-    pod 'XLPagerTabStrip', '~> 4.0'
+    pod 'BTNavigationDropdownMenu'
 end
 
 target 'schoolFinderTests' do

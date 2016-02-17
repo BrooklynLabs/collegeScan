@@ -11,8 +11,8 @@ import UIKit
 import SafariServices
 
 class SettingsVC: UITableViewController {
-    var settingItems: [[String]] = [["See Intro Screen Again"], ["AsyncDisplayKit", "EAIntroView", "SnapKit", "DZNEmptyDataSet", "Realm", "Whisper", "AlamoFire", "AlamofireObjectMapper"]]
-    var podURLs: [String]! = ["http://asyncdisplaykit.org", "https://github.com/ealeksandrov/EAIntroView", "https://github.com/SnapKit/SnapKit", "https://github.com/dzenbot/DZNEmptyDataSet", "https://realm.io/", "https://github.com/hyperoslo/Whisper", "https://github.com/Alamofire/Alamofire", "https://github.com/tristanhimmelman/AlamofireObjectMapper"]
+    var settingItems: [[String]] = [["See Intro Screen Again"], ["AsyncDisplayKit", "EAIntroView", "SnapKit", "DZNEmptyDataSet", "Realm", "Whisper", "AlamoFire", "AlamofireObjectMapper", "BTNavigationDropdownMenu"]]
+    var podURLs: [String]! = ["http://asyncdisplaykit.org", "https://github.com/ealeksandrov/EAIntroView", "https://github.com/SnapKit/SnapKit", "https://github.com/dzenbot/DZNEmptyDataSet", "https://realm.io/", "https://github.com/hyperoslo/Whisper", "https://github.com/Alamofire/Alamofire", "https://github.com/tristanhimmelman/AlamofireObjectMapper", "https://github.com/PhamBaTho/BTNavigationDropdownMenu"]
     
     override func viewDidLoad() {
         tableView = UITableView(frame: tableView.frame, style: .Grouped)

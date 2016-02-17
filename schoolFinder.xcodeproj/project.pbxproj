@@ -34,7 +34,7 @@
 		3191A7F21C6E910800165E34 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7F11C6E910800165E34 /* SettingsVC.swift */; };
 		3191A7F41C6E94A700165E34 /* SearchMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7F31C6E94A700165E34 /* SearchMenuVC.swift */; };
 		3191A7F71C6E9A1C00165E34 /* SchoolNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7F61C6E9A1C00165E34 /* SchoolNode.swift */; };
-		3191A7F91C6E9C6C00165E34 /* StatesStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7F81C6E9C6C00165E34 /* StatesStruct.swift */; };
+		3191A7F91C6E9C6C00165E34 /* OptionsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7F81C6E9C6C00165E34 /* OptionsSettings.swift */; };
 		3191A7FB1C6ECB5B00165E34 /* QueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7FA1C6ECB5B00165E34 /* QueryVC.swift */; };
 		D32828A38C6AEEF2955884FE /* Pods_schoolFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAB20622ED7B22A7F5583E4 /* Pods_schoolFinder.framework */; };
 /* End PBXBuildFile section */
@@ -91,7 +91,7 @@
 		3191A7F11C6E910800165E34 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		3191A7F31C6E94A700165E34 /* SearchMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMenuVC.swift; sourceTree = "<group>"; };
 		3191A7F61C6E9A1C00165E34 /* SchoolNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolNode.swift; sourceTree = "<group>"; };
-		3191A7F81C6E9C6C00165E34 /* StatesStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatesStruct.swift; sourceTree = "<group>"; };
+		3191A7F81C6E9C6C00165E34 /* OptionsSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsSettings.swift; sourceTree = "<group>"; };
 		3191A7FA1C6ECB5B00165E34 /* QueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryVC.swift; sourceTree = "<group>"; };
 		8FAB20622ED7B22A7F5583E4 /* Pods_schoolFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_schoolFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79FE81F7685EB27FFC511BA /* Pods-schoolFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schoolFinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-schoolFinder/Pods-schoolFinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			children = (
 				3191A7D61C697E0100165E34 /* DataManager.swift */,
 				3191A7E91C6D4E9100165E34 /* DataFields.swift */,
-				3191A7F81C6E9C6C00165E34 /* StatesStruct.swift */,
+				3191A7F81C6E9C6C00165E34 /* OptionsSettings.swift */,
 				312EB4F51C6F9C5700426543 /* MessageHelper.swift */,
 			);
 			name = Helpers;
@@ -446,7 +446,7 @@
 				312EB4FA1C70D6F300426543 /* SchoolViewModel.swift in Sources */,
 				312EB4F61C6F9C5700426543 /* MessageHelper.swift in Sources */,
 				312EB50F1C74EA7E00426543 /* FieldTransform.swift in Sources */,
-				3191A7F91C6E9C6C00165E34 /* StatesStruct.swift in Sources */,
+				3191A7F91C6E9C6C00165E34 /* OptionsSettings.swift in Sources */,
 				3191A7D31C69790600165E34 /* SavedVC.swift in Sources */,
 				3191A7F71C6E9A1C00165E34 /* SchoolNode.swift in Sources */,
 				3191A7EA1C6D4E9100165E34 /* DataFields.swift in Sources */,

@@ -18,6 +18,7 @@ class Result: NSObject, Mappable {
     var ZIP_CODE: String = ""
     var SCHOOL_URL: String = ""
     var CARNEGIE_BASIC: String = ""
+    var CARNEGIE_SIZE_SETTING: String = ""
     var OWNERSHIP: String = ""
     var LOCALE: String = ""
     var LOCATION_LON: String = ""
@@ -80,6 +81,7 @@ class Result: NSObject, Mappable {
         ZIP_CODE <- (map["school.zip"], FieldTransform())
         SCHOOL_URL <- map["school.school_url"]
         CARNEGIE_BASIC <- (map["school.carnegie_basic"], FieldTransform())
+        CARNEGIE_SIZE_SETTING <- (map["school.carnegie_size_setting"], FieldTransform())
         OWNERSHIP <- (map["school.ownership"], FieldTransform())
         LOCALE <- (map["school.locale"], FieldTransform())
         LOCATION_LAT <- (map["school.lat"], FieldTransform())

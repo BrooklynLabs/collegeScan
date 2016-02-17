@@ -18,6 +18,7 @@ class SavedViewController: UIViewController, ASTableDataSource, ASTableDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Saved Schools"
         savedSchools = []
         tableView = ASTableView(frame: view.bounds)
         tableView.asyncDataSource = self

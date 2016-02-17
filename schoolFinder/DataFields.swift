@@ -17,6 +17,8 @@ struct DataFields {
     
     let SCHOOL_URL =           "school.school_url"
     
+    let CARNEGIE_BASIC =       "school.carnegie_basic"
+    let CARNEGIE_SIZE_SETTING =       "school.carnegie_size_setting"
     let OWNERSHIP =            "school.ownership"
     let LOCALE =               "school.locale"
     let REGION_ID =            "school.region_id"

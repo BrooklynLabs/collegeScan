@@ -8,45 +8,67 @@
 
 import Foundation
 import AsyncDisplayKit
+import BTNavigationDropdownMenu
 
 class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
     var tableView: ASTableView!
-    var statesDict: [String: String]!
+    let browseOptions = ["States": "stateSettings", "Carnegie Basic": "carnegieBasicSettings", "Locale": "localeSettings", "Carnegie Size": "carnegieSizeSettings"]
+    let browseFieldKeys = ["school.state", "school.carnegie_basic", "school.locale", "school.carnegie_size_setting"]
     
-    let stateReference = StatesStruct()
+    var optionsDict = [String: String]()
+    let optionsReference = OptionSettings()
+    let dataFields = DataFields()
+    var selectedFieldKey: String!
+    
+    var menuView: BTNavigationDropdownMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Browse Schools"
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController!, title: "Select Browse Options", items: Array(browseOptions.keys))
         tableView = ASTableView(frame: view.bounds)
         tableView.asyncDataSource = self
         tableView.asyncDelegate = self
         view.addSubview(tableView)
         
-        statesDict = stateReference.stateAbbrev
+        setupMenu()
+    }
+    
+    func setupMenu() {
+        self.navigationItem.titleView = menuView
+        menuView.cellBackgroundColor = UIColor.flatPurpleColor()
+        menuView.cellTextLabelColor = UIColor.whiteColor()
+        
+        menuView.didSelectItemAtIndexHandler = { (indexPath: Int) -> Void in
+//            Handle the switchover by assigning three variables: the option names, selected API query param key and api query param value
+            let selectedSelectionOption = Array(self.browseOptions.values)[indexPath]
+            self.optionsDict = self.optionsReference.valueForKey(selectedSelectionOption) as! [String: String]
+            self.selectedFieldKey = self.browseFieldKeys[indexPath]
+            
+            self.tableView.reloadData()
+        }
     }
     
     func tableView(tableView: ASTableView, nodeForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
         let cellNode = ASTextCellNode()
-        cellNode.text = Array(statesDict.keys)[indexPath.row]
+        cellNode.text = Array(optionsDict.keys)[indexPath.row]
         
         return cellNode
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let dataFields = DataFields()
-//        Grab the api specific key code for the state selected 'school.state = 1'
-        let stateKeyValue: String = Array(statesDict.values)[indexPath.row]
-        let stateQueryDict = [dataFields.STATE: stateKeyValue]
+//        Grab the api specific key code for the selected browse field
+        let queriedValue: String = Array(optionsDict.values)[indexPath.row]
+        let queriedParam = [selectedFieldKey: queriedValue]
         
 //        Init a queryVC
-        let queryVCtoPush = QueryViewController(params: stateQueryDict)
+        let queryVCtoPush = QueryViewController(params: queriedParam)
         
         self.navigationController!.pushViewController(queryVCtoPush, animated: true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statesDict.count
+        return optionsDict.count
     }
     
 }

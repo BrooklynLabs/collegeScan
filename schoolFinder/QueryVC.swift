@@ -30,7 +30,7 @@ class QueryViewController: UIViewController, ASTableViewDataSource, ASTableViewD
         queriedParams = dataFields.print_minimum_properties_with_query(params)
         super.init(nibName: nil, bundle: nil)
         
-        title = Array(params.values).first
+        title = Array(params.keys).first
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
