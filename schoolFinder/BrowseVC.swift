@@ -13,7 +13,7 @@ import BTNavigationDropdownMenu
 class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
     var tableView: ASTableView!
     let browseOptions = ["States": "stateSettings", "Carnegie Basic": "carnegieBasicSettings", "Locale": "localeSettings", "Carnegie Size": "carnegieSizeSettings"]
-    let browseFieldKeys = ["school.state", "school.carnegie_basic", "school.locale", "school.carnegie_size_setting"]
+    let browseFieldKeys = ["stateSettings": "school.state", "carnegieBasicSettings": "school.carnegie_basic", "localeSettings": "school.locale", "carnegieSizeSettings": "school.carnegie_size_setting"]
     
     var optionsDict = [String: String]()
     let optionsReference = OptionSettings()
@@ -43,7 +43,7 @@ class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
 //            Handle the switchover by assigning three variables: the option names, selected API query param key and api query param value
             let selectedSelectionOption = Array(self.browseOptions.values)[indexPath]
             self.optionsDict = self.optionsReference.valueForKey(selectedSelectionOption) as! [String: String]
-            self.selectedFieldKey = self.browseFieldKeys[indexPath]
+            self.selectedFieldKey = self.browseFieldKeys[selectedSelectionOption]
             
             self.tableView.reloadData()
         }
@@ -60,6 +60,7 @@ class BrowseController: UIViewController, ASTableDataSource, ASTableDelegate {
 //        Grab the api specific key code for the selected browse field
         let queriedValue: String = Array(optionsDict.values)[indexPath.row]
         let queriedParam = [selectedFieldKey: queriedValue]
+        print(queriedParam)
         
 //        Init a queryVC
         let queryVCtoPush = QueryViewController(params: queriedParam)
