@@ -18,13 +18,9 @@ extension SchoolViewController {
             if let successResponse = response.result.value {
                 self.selectedSchool = successResponse.results!.first as Result!
                 let mirroredSchool = Mirror(reflecting: self.selectedSchool)
-                for (index, attr) in mirroredSchool.children.enumerate() {
-                    if attr.label != nil {
-                        self.schoolPropertyKey.append(attr.label as String!)
-                        self.schoolPropertyValue.append(String(attr.value))
-                    }
+                for (_, attr) in mirroredSchool.children.enumerate() {
+                    self.schoolPropertyKey.append(attr.label!)
                 }
-                    
                 completion(downloaded: true)
             } else {
                 Whisper(self.messageHelper.errorMessage, to: self.navigationController!, action: .Present)
@@ -35,7 +31,10 @@ extension SchoolViewController {
     }
     
     func openOptionsMenu(sender: AnyObject) {
-        print("hello")
+        let textToShare = "Check out this school: \(selectedSchool.NAME) :: \(selectedSchool.SCHOOL_URL)"
+        let activityViewController = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
 }

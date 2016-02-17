@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import UIKit
+import AsyncDisplayKit
 
-extension SchoolViewController: UITableViewDataSource, UITableViewDelegate {
+extension SchoolViewController: ASTableDelegate, ASTableDataSource {
     
     func prepareTable() {
-        schoolTable = UITableView(frame: view.frame)
-        schoolTable.dataSource = self
-        schoolTable.delegate = self
-        schoolTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "dataCell")
+        schoolTable = ASTableView(frame: view.bounds, style: UITableViewStyle.Plain, asyncDataFetching: true)
+        schoolTable.asyncDataSource = self
+        schoolTable.asyncDelegate = self
         view.addSubview(schoolTable)
     }
     
@@ -23,12 +22,13 @@ extension SchoolViewController: UITableViewDataSource, UITableViewDelegate {
         return schoolPropertyKey.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "dataCell")
-        cell.textLabel?.text = schoolPropertyValue[indexPath.row] as String!
-        cell.detailTextLabel?.text = schoolPropertyKey[indexPath.row]
+    func tableView(tableView: ASTableView, nodeForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
+        let label = schoolPropertyKey[indexPath.row] as String!
+        let value = selectedSchool.print_value(label)
+        let cell = ProfileDataCellNode(label: label, value: value)
         
         return cell
     }
+    
     
 }

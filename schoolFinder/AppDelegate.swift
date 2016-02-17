@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = tabBar
         self.window!.makeKeyAndVisible()
         
-        Chameleon.setGlobalThemeUsingPrimaryColor(UIColor.flatRedColorDark(), withContentStyle: UIContentStyle.Contrast)
+        Chameleon.setGlobalThemeUsingPrimaryColor(UIColor.flatPurpleColorDark(), withContentStyle: UIContentStyle.Contrast)
         
         return true
     }

@@ -13,6 +13,7 @@ target 'schoolFinder' do
     pod 'AsyncSwift'
     pod 'StatefulViewController', '~> 1.0'
     pod 'Eureka', '~> 1.3'
+    pod 'XLPagerTabStrip', '~> 4.0'
 end
 
 target 'schoolFinderTests' do

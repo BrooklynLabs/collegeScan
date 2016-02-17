@@ -8,6 +8,7 @@
 
 import Foundation
 import Whisper
+import AsyncDisplayKit
 
 class SchoolViewController: UIViewController {
     var apiURL: String = "https://api.data.gov/ed/collegescorecard/v1/schools"
@@ -20,7 +21,7 @@ class SchoolViewController: UIViewController {
     var selectedSchoolID: String
     var selectedSchool: Result!
     
-    var schoolTable: UITableView!
+    var schoolTable: ASTableView!
     var schoolPropertyKey: [String] = []
     var schoolPropertyValue: [String] = []
     
@@ -46,8 +47,10 @@ class SchoolViewController: UIViewController {
             Whisper(messageHelper.schoolErrorMessage, to: self.navigationController!, action: .Present)
             Silent(self.navigationController!, after: 4.0)
         } else {
+            Whisper(messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
             prepareData({ (downloaded) -> Void in
                 self.schoolTable.reloadData()
+                Silent(self.navigationController!)
             })
         }
     }

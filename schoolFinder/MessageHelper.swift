@@ -14,7 +14,7 @@ struct MessageHelper {
     
     let downloadingMessage = Message(title: "Downloading ...", textColor: UIColor.whiteColor(), backgroundColor: UIColor.flatYellowColorDark(), images: nil)
     
-    let emptyMessage = Message(title: "Nothing to Show", textColor: UIColor.whiteColor(), backgroundColor: UIColor.flatYellowColorDark(), images: nil)
+    let emptyMessage = Message(title: "Nothing to Show", textColor: UIColor.whiteColor(), backgroundColor: UIColor.flatRedColorDark(), images: nil)
     
 //    Error messages
     let schoolErrorMessage = Message(title: "School Not Found :(", textColor: UIColor.whiteColor(), backgroundColor: UIColor.flatRedColor(), images: nil)
