@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let search = UINavigationController()
         search.viewControllers = [SearchViewController()]
-        search.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Search, tag: 3)
+        search.tabBarItem = UITabBarItem(title: "Search Colleges", image: UIImage(named: "Search"), tag: 3)
 
         
         let saved = UINavigationController()
