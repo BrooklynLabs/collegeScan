@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, ASTableViewDataSource, ASTableView
         tableView.asyncDataSource = self
         tableView.asyncDelegate = self
         view.addSubview(tableView)
+        self.title = "Search Schools"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "openSearchMenu:")
     }

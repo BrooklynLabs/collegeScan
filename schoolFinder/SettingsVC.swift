@@ -17,6 +17,7 @@ class SettingsVC: UITableViewController {
     override func viewDidLoad() {
         tableView = UITableView(frame: tableView.frame, style: .Grouped)
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.title = "Settings and Acknowledgements"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let browse = UINavigationController()
         browse.viewControllers = [BrowseController()]
-        browse.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
+        browse.tabBarItem = UITabBarItem(title: "Browse Colleges", image: UIImage(named: "Browse"), tag: 1)
 
         let search = UINavigationController()
         search.viewControllers = [SearchViewController()]
@@ -30,11 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let saved = UINavigationController()
         saved.viewControllers = [SavedViewController()]
-        saved.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 2)
+        saved.tabBarItem = UITabBarItem(title: "Saved Colleges", image: UIImage(named: "Archive"), tag: 2)
         
         let settings = UINavigationController()
         settings.viewControllers = [SettingsVC()]
-        settings.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.More, tag: 3)
+        settings.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.More, tag: 4)
         
         tabBar = UITabBarController()
         tabBar.viewControllers = [browse, search, saved, settings]
