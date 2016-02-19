@@ -7,48 +7,21 @@
 //
 
 import Foundation
+import RealmSwift
 
-class SchoolViewModel: NSObject {
+class SchoolViewModel: Object {
     
-    var NAME: String
-    var SCHOOL_URL: String
-    var ID: String
-    var CITY: String
+    dynamic var NAME: String = "Unknown"
+    dynamic var SCHOOL_URL: String = "Unknown URL"
+    dynamic var ID: String = "0"
+    dynamic var CITY: String = "unknown City"
     
-    init(school: QueryResult) {
-        NAME = "Unknown"
-        SCHOOL_URL = "Unknown URL"
-        ID = "0"
-        CITY = "unknown City"
-        super.init()
-        
-        setupWithResult(school)
-    }
-    
-    init(name: String, school_url: String, id: String, city: String) {
-        self.NAME = name
-        self.SCHOOL_URL = school_url
-        self.ID = id
-        self.CITY = city
-    }
-    
-//    required convenience init?(coder aDecoder: NSCoder) {
-//        guard let NAME = aDecoder.decodeObjectForKey("NAME") as? String,
-//            let SCHOOL_URL = aDecoder.decodeObjectForKey("SCHOOL_URL") as? String,
-//            let ID = aDecoder.decodeObjectForKey("ID") as? String,
-//            let CITY = aDecoder.decodeObjectForKey("CITY") as? String
-//            else {
-//                return nil
-//        }
-//        
-//        self.init(
-//        
-//    }
-    
-    class func createViewModels(schools: [QueryResult]) -> [SchoolViewModel] {
+    class func createViewModels(queryResults: [QueryResult]) -> [SchoolViewModel] {
         var viewmodels = [SchoolViewModel]()
-        for school in schools {
-            viewmodels.append(SchoolViewModel(school: school))
+        for queryResult in queryResults {
+            let schoolVM = SchoolViewModel()
+            schoolVM.setupWithResult(queryResult)
+            viewmodels.append(schoolVM)
         }
         
         return viewmodels

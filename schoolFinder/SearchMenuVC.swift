@@ -11,6 +11,8 @@ import UIKit
 import Eureka
 
 class SearchMenuViewController: FormViewController {
+    var info = "InformationSearchMenu"
+    var delegate: SearchPassbackProtocol? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +28,11 @@ class SearchMenuViewController: FormViewController {
                 
             <<< ButtonRow("Dismiss") { (row: ButtonRow) in
                 row.title = "Dismiss"
-                print("hello")
             }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        delegate?.receiveSearchParameters("hello")
     }
     
 }

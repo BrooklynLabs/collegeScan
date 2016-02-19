@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AsyncDisplayKit
 
-class SearchViewController: UIViewController, ASTableViewDataSource, ASTableViewDelegate {
+class SearchViewController: UIViewController, ASTableViewDataSource, ASTableViewDelegate, SearchPassbackProtocol {
     var tableView: ASTableView!
     
     override func viewDidLoad() {
@@ -35,7 +35,12 @@ class SearchViewController: UIViewController, ASTableViewDataSource, ASTableView
     
     func openSearchMenu(sender: AnyObject) {
         let searchSubVC = SearchMenuViewController()
-        
+//        Set the protocol as a delegate for passback
+        searchSubVC.delegate = self
         navigationController?.pushViewController(searchSubVC, animated: true)
+    }
+    
+    func receiveSearchParameters(queries: String) {
+        print(queries)
     }
 }

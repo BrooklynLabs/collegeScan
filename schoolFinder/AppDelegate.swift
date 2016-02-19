@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         browse.tabBarItem = UITabBarItem(title: "Browse Colleges", image: UIImage(named: "Browse"), tag: 1)
 
         let search = UINavigationController()
-        search.viewControllers = [SearchViewController()]
+        search.viewControllers = [SearchMenuViewController()]
         search.tabBarItem = UITabBarItem(title: "Search Colleges", image: UIImage(named: "Search"), tag: 3)
 
         

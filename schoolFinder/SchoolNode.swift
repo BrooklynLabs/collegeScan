@@ -15,13 +15,17 @@ class SchoolNode: ASCellNode {
     var subtitleNode: ASTextNode
     var typeNode: ASTextNode
     
-    init!(result: SchoolViewModel) {
+    init!(result: AnyObject) {
         titleNode = ASTextNode()
         subtitleNode = ASTextNode()
         typeNode = ASTextNode()
         
         super.init()
-        setupSubNodesWithItem(result)
+        if let school = result as? SchoolViewModel {
+            setupSubNodes(school.NAME, url: school.SCHOOL_URL, city: school.CITY)
+        } else {
+            setupSubNodes("Unknown Name", url: "Unknown URL", city: "Unknown Location")
+        }
     }
     
     override func layoutSpecThatFits(constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -30,16 +34,16 @@ class SchoolNode: ASCellNode {
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5.0, left: 10.0, bottom: 5.0, right: 10.0), child: verticalNodeStack)
     }
     
-    func setupSubNodesWithItem(result: SchoolViewModel) {
-        titleNode.attributedString = NSAttributedString(string: result.NAME, attributes: [
+    func setupSubNodes(name: String, url: String, city: String) {
+        titleNode.attributedString = NSAttributedString(string: name, attributes: [
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             ])
         titleNode.placeholderColor = UIColor.blackColor()
         
-        subtitleNode.attributedString = NSAttributedString(string: result.SCHOOL_URL, attributes: [
+        subtitleNode.attributedString = NSAttributedString(string: url, attributes: [
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
             ])
-        typeNode.attributedString = NSAttributedString(string: result.CITY, attributes: [
+        typeNode.attributedString = NSAttributedString(string: city, attributes: [
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline),
             NSForegroundColorAttributeName: UIColor.blueColor()
             ])

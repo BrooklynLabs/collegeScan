@@ -12,6 +12,7 @@ target 'schoolFinder' do
     pod 'AsyncDisplayKit'
     pod 'Eureka', '~> 1.3'
     pod 'BTNavigationDropdownMenu'
+    pod 'RealmSwift'
 end
 
 target 'schoolFinderTests' do

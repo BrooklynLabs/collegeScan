@@ -20,4 +20,5 @@ struct MessageHelper {
     let schoolErrorMessage = Message(title: "School Not Found :(", textColor: UIColor.whiteColor(), backgroundColor: UIColor.flatRedColor(), images: nil)
     let errorMessage = Message(title: "Something is Wrong :(", textColor: UIColor.whiteColor(), backgroundColor: UIColor.flatRedColor(), images: nil)
     
+    let schoolSavedMessage = Message(title: "Save Successful!", textColor: UIColor.whiteColor(), backgroundColor: UIColor.flatGreenColorDark(), images: nil)
 }

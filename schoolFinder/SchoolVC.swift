@@ -9,6 +9,7 @@
 import Foundation
 import Whisper
 import AsyncDisplayKit
+import RealmSwift
 
 class SchoolViewController: UIViewController {
     var apiURL: String = "https://api.data.gov/ed/collegescorecard/v1/schools"
