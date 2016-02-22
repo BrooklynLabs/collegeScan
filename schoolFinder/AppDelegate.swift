@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import Whisper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -15,10 +15,11 @@
 		312EB5041C7386D600426543 /* QueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5031C7386D600426543 /* QueryResponse.swift */; };
 		312EB5061C7386EA00426543 /* QueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5051C7386EA00426543 /* QueryResult.swift */; };
 		312EB5081C74CC9700426543 /* ProfileDataCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5071C74CC9700426543 /* ProfileDataCellNode.swift */; };
-		312EB50F1C74EA7E00426543 /* FieldTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB50E1C74EA7E00426543 /* FieldTransform.swift */; };
+		312EB50F1C74EA7E00426543 /* FieldsTransforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB50E1C74EA7E00426543 /* FieldsTransforms.swift */; };
 		312EB5111C75178900426543 /* JYTextCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5101C75178900426543 /* JYTextCellNode.swift */; };
 		312EB5171C775F9900426543 /* SearchPassbackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5161C775F9900426543 /* SearchPassbackProtocol.swift */; };
 		312EB5191C77655700426543 /* SaveCollegeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5181C77655700426543 /* SaveCollegeActivity.swift */; };
+		312EB5241C7BBAB100426543 /* NetConnectedness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5231C7BBAB100426543 /* NetConnectedness.swift */; };
 		3191A7A31C69771D00165E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7A21C69771D00165E34 /* AppDelegate.swift */; };
 		3191A7AA1C69771D00165E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3191A7A91C69771D00165E34 /* Assets.xcassets */; };
 		3191A7AD1C69771D00165E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3191A7AB1C69771D00165E34 /* LaunchScreen.storyboard */; };
@@ -69,10 +70,11 @@
 		312EB5031C7386D600426543 /* QueryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResponse.swift; sourceTree = "<group>"; };
 		312EB5051C7386EA00426543 /* QueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResult.swift; sourceTree = "<group>"; };
 		312EB5071C74CC9700426543 /* ProfileDataCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataCellNode.swift; sourceTree = "<group>"; };
-		312EB50E1C74EA7E00426543 /* FieldTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldTransform.swift; sourceTree = "<group>"; };
+		312EB50E1C74EA7E00426543 /* FieldsTransforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsTransforms.swift; sourceTree = "<group>"; };
 		312EB5101C75178900426543 /* JYTextCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JYTextCellNode.swift; sourceTree = "<group>"; };
 		312EB5161C775F9900426543 /* SearchPassbackProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPassbackProtocol.swift; sourceTree = "<group>"; };
 		312EB5181C77655700426543 /* SaveCollegeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCollegeActivity.swift; sourceTree = "<group>"; };
+		312EB5231C7BBAB100426543 /* NetConnectedness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetConnectedness.swift; sourceTree = "<group>"; };
 		3191A79F1C69771D00165E34 /* schoolFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = schoolFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3191A7A21C69771D00165E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3191A7A91C69771D00165E34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +146,8 @@
 				3191A7E91C6D4E9100165E34 /* DataFields.swift */,
 				3191A7F81C6E9C6C00165E34 /* OptionsSettings.swift */,
 				312EB4F51C6F9C5700426543 /* MessageHelper.swift */,
+				312EB50E1C74EA7E00426543 /* FieldsTransforms.swift */,
+				312EB5231C7BBAB100426543 /* NetConnectedness.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -174,7 +178,6 @@
 				3191A7DE1C6980B100165E34 /* DataResponse.swift */,
 				3191A7EB1C6D569D00165E34 /* Error.swift */,
 				3191A7ED1C6E8D2F00165E34 /* Result.swift */,
-				312EB50E1C74EA7E00426543 /* FieldTransform.swift */,
 			);
 			name = "Profile-Related";
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				312EB4FB1C72654C00426543 /* SchoolVC.swift */,
 				312EB4FF1C7376FB00426543 /* SchoolVC-Data.swift */,
 				312EB5011C73770500426543 /* SchoolVC-Table.swift */,
+				3191A7FA1C6ECB5B00165E34 /* QueryVC.swift */,
 				3191A7F51C6E94AC00165E34 /* SubViewControllers */,
 			);
 			name = ViewControllers;
@@ -274,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				3191A7EF1C6E8F7100165E34 /* SearchVC.swift */,
-				3191A7FA1C6ECB5B00165E34 /* QueryVC.swift */,
 			);
 			name = SubViewControllers;
 			sourceTree = "<group>";
@@ -478,7 +481,7 @@
 				3191A7EC1C6D569D00165E34 /* Error.swift in Sources */,
 				312EB4FA1C70D6F300426543 /* SchoolViewModel.swift in Sources */,
 				312EB4F61C6F9C5700426543 /* MessageHelper.swift in Sources */,
-				312EB50F1C74EA7E00426543 /* FieldTransform.swift in Sources */,
+				312EB50F1C74EA7E00426543 /* FieldsTransforms.swift in Sources */,
 				3191A7F91C6E9C6C00165E34 /* OptionsSettings.swift in Sources */,
 				3191A7D31C69790600165E34 /* SavedVC.swift in Sources */,
 				3191A7F71C6E9A1C00165E34 /* SchoolNode.swift in Sources */,
@@ -494,6 +497,7 @@
 				312EB5061C7386EA00426543 /* QueryResult.swift in Sources */,
 				3191A7D51C69796D00165E34 /* BrowseVC.swift in Sources */,
 				3191A7A31C69771D00165E34 /* AppDelegate.swift in Sources */,
+				312EB5241C7BBAB100426543 /* NetConnectedness.swift in Sources */,
 				312EB5021C73770500426543 /* SchoolVC-Table.swift in Sources */,
 				3191A7DF1C6980B100165E34 /* DataResponse.swift in Sources */,
 				3191A7FB1C6ECB5B00165E34 /* QueryVC.swift in Sources */,

@@ -24,14 +24,15 @@ class ProfileDataCellNode: ASCellNode {
     }
     
     override func layoutSpecThatFits(constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        let horizontalSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.Horizontal, spacing: 8.0, justifyContent: ASStackLayoutJustifyContent.SpaceBetween, alignItems: ASStackLayoutAlignItems.BaselineFirst, children: [labelNode, valueNode])
+        let horizontalSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.Vertical, spacing: 8.0, justifyContent: ASStackLayoutJustifyContent.SpaceBetween, alignItems: ASStackLayoutAlignItems.BaselineFirst, children: [valueNode, labelNode])
         
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5.0, left: 10.0, bottom: 5.0, right: 10.0), child: horizontalSpec)
     }
     
     func setupProfileNode(label: String, value: String) {
         labelNode.attributedString = NSAttributedString(string: label, attributes: [
-            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline),
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
             ])
         labelNode.placeholderColor = UIColor.blackColor()
         

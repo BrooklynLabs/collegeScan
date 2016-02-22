@@ -26,6 +26,8 @@ class SchoolViewController: UIViewController {
     var schoolPropertyKey: [String] = []
     var schoolPropertyValue: [String] = []
     
+    var connectedToInternet: Bool = NetConnectedNess.isConnectedToNetwork()
+    
     init(schoolID: String) {
         selectedSchoolID = schoolID
         queriedParams = dataFields.print_id_query()
@@ -40,19 +42,30 @@ class SchoolViewController: UIViewController {
         self.init(schoolID: "")
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if !NetConnectedNess.isConnectedToNetwork() {
+            Whisper(messageHelper.noInternetMessage, to: self.navigationController!, action: .Present)
+        }
+    }
+    
     override func viewDidLoad() {
         view.backgroundColor = UIColor.flatWhiteColorDark()
         prepareTable()
         
+//        If there is no valid ID run an error msg.
         if selectedSchoolID == "0" {
             Whisper(messageHelper.schoolErrorMessage, to: self.navigationController!, action: .Present)
             Silent(self.navigationController!, after: 4.0)
-        } else {
+        } else if NetConnectedNess.isConnectedToNetwork() {
             Whisper(messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
             prepareData({ (downloaded) -> Void in
                 self.schoolTable.reloadData()
                 Silent(self.navigationController!)
             })
+        } else {
+//            If wifi is off, run an error msg
+            Whisper(messageHelper.noInternetMessage, to: self.navigationController!, action: .Present)
+            Silent(self.navigationController!, after: 3.0)
         }
     }
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import AsyncDisplayKit
+import SafariServices
 
 extension SchoolViewController: ASTableDelegate, ASTableDataSource {
     
@@ -23,12 +24,21 @@ extension SchoolViewController: ASTableDelegate, ASTableDataSource {
     }
     
     func tableView(tableView: ASTableView, nodeForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
-        let label = schoolPropertyKey[indexPath.row] as String!
-        let value = selectedSchool.print_value(label)
-        let cell = ProfileDataCellNode(label: label, value: value)
+        let labelValue = schoolPropertyKey[indexPath.row] as String!
+        let valueValue = selectedSchool.print_value(labelValue)
+        let cell = ProfileDataCellNode(label: labelValue.lowercaseString, value: valueValue)
         
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let labelValue = schoolPropertyKey[indexPath.row] as String!
+        let schoolURL = "http://\(selectedSchool.print_value(labelValue))"
+        if labelValue == "SCHOOL_URL" {
+            let svc = SFSafariViewController(URL: NSURL(string: schoolURL)!)
+            self.presentViewController(svc, animated: true, completion: nil)
+        }
+    }
     
 }

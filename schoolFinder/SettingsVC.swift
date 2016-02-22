@@ -11,7 +11,7 @@ import UIKit
 import SafariServices
 
 class SettingsVC: UITableViewController {
-    var settingItems: [[String]] = [["See Intro Screen Again"], ["AsyncDisplayKit", "EAIntroView", "SnapKit", "DZNEmptyDataSet", "Realm", "Whisper", "AlamoFire", "AlamofireObjectMapper", "BTNavigationDropdownMenu"]]
+    var settingItems: [[String]] = [["AsyncDisplayKit", "EAIntroView", "SnapKit", "DZNEmptyDataSet", "Realm", "Whisper", "AlamoFire", "AlamofireObjectMapper", "BTNavigationDropdownMenu"]]
     var podURLs: [String]! = ["http://asyncdisplaykit.org", "https://github.com/ealeksandrov/EAIntroView", "https://github.com/SnapKit/SnapKit", "https://github.com/dzenbot/DZNEmptyDataSet", "https://realm.io/", "https://github.com/hyperoslo/Whisper", "https://github.com/Alamofire/Alamofire", "https://github.com/tristanhimmelman/AlamofireObjectMapper", "https://github.com/PhamBaTho/BTNavigationDropdownMenu"]
     
     override func viewDidLoad() {
@@ -21,15 +21,13 @@ class SettingsVC: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         switch section {
         case 0:
-            return "Settings"
-        case 1:
             return "Acknowledgements"
         default:
             return "Error:"
@@ -42,11 +40,7 @@ class SettingsVC: UITableViewController {
         
         cell.backgroundColor = UIColor.whiteColor()
         cell.textLabel?.text = self.settingItems[indexPath.section][indexPath.row]
-        
-        if indexPath.section == 1 {
-            cell.detailTextLabel?.text = self.podURLs[indexPath.row]
-        }
-        
+        cell.detailTextLabel?.text = self.podURLs[indexPath.row]
         return cell
     }
     
@@ -58,12 +52,8 @@ class SettingsVC: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if indexPath.section == 0 {
-            print("Do something")
-        } else if indexPath.section == 1 {
-            let selectedURL = self.podURLs[indexPath.row]
-            let svc = SFSafariViewController(URL: NSURL(string: selectedURL)!)
-            self.presentViewController(svc, animated: true, completion: nil)
-        }
+        let selectedURL = self.podURLs[indexPath.row]
+        let svc = SFSafariViewController(URL: NSURL(string: selectedURL)!)
+        self.presentViewController(svc, animated: true, completion: nil)
     }
 }

@@ -46,9 +46,14 @@ class QueryViewController: UIViewController, ASTableViewDataSource, ASTableViewD
         
 //        In ViewdidLoad because this calls for a NavigationController call and it doesnt exist in INIT
         Whisper(messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
-        prepareData { (downloaded) -> Void in
-            self.tableView.reloadData()
-            Silent(self.navigationController!)
+        if NetConnectedNess.isConnectedToNetwork() {
+            prepareData { (downloaded) -> Void in
+                self.tableView.reloadData()
+                Silent(self.navigationController!)
+            }
+        } else {
+            Whisper(messageHelper.noInternetMessage, to: self.navigationController!, action: .Present)
+            Silent(self.navigationController!, after: 3.0)
         }
     }
     
