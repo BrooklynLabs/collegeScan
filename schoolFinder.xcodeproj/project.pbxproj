@@ -75,7 +75,7 @@
 		312EB5161C775F9900426543 /* SearchPassbackProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPassbackProtocol.swift; sourceTree = "<group>"; };
 		312EB5181C77655700426543 /* SaveCollegeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCollegeActivity.swift; sourceTree = "<group>"; };
 		312EB5231C7BBAB100426543 /* NetConnectedness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetConnectedness.swift; sourceTree = "<group>"; };
-		3191A79F1C69771D00165E34 /* schoolFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = schoolFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3191A79F1C69771D00165E34 /* CollegeScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3191A7A21C69771D00165E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3191A7A91C69771D00165E34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3191A7AC1C69771D00165E34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		3191A7A01C69771D00165E34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3191A79F1C69771D00165E34 /* schoolFinder.app */,
+				3191A79F1C69771D00165E34 /* CollegeScan.app */,
 				3191A7B31C69771D00165E34 /* schoolFinderTests.xctest */,
 				3191A7BE1C69771D00165E34 /* schoolFinderUITests.xctest */,
 			);
@@ -311,7 +311,7 @@
 			);
 			name = schoolFinder;
 			productName = schoolFinder;
-			productReference = 3191A79F1C69771D00165E34 /* schoolFinder.app */;
+			productReference = 3191A79F1C69771D00165E34 /* CollegeScan.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3191A7B21C69771D00165E34 /* schoolFinderTests */ = {
@@ -638,7 +638,7 @@
 				INFOPLIST_FILE = schoolFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.jonathanyu.schoolFinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CollegeScan;
 			};
 			name = Debug;
 		};
@@ -650,7 +650,7 @@
 				INFOPLIST_FILE = schoolFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.jonathanyu.schoolFinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CollegeScan;
 			};
 			name = Release;
 		};
