@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Alamofire
-import Async
 
 class DataManagerVC: UIViewController {
     var progressTracker: UIProgressView!
