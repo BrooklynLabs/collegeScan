@@ -44,9 +44,9 @@ class QueryViewController: UIViewController, ASTableViewDataSource, ASTableViewD
         tableView.asyncDelegate = self
         view.addSubview(tableView)
         
-//        In ViewdidLoad because this calls for a NavigationController call and it doesnt exist in INIT
-        Whisper(messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
+//        In ViewdidLoad because this calls for a NavigationController call and it doesnt exist in INIT. Also check for internet 
         if NetConnectedNess.isConnectedToNetwork() {
+            Whisper(messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
             prepareData { (downloaded) -> Void in
                 self.tableView.reloadData()
                 Silent(self.navigationController!)

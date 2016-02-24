@@ -33,6 +33,7 @@ class SavedViewController: UIViewController, ASTableDataSource, ASTableDelegate 
         savedSchools = try! Realm().objects(SchoolViewModel)
         if savedSchools.count == 0 {
             Whisper(messageHelper.emptyMessage, to: self.navigationController!, action: .Present)
+            Silent(self.navigationController!, after: 3.0)
         } else {
             tableView.reloadData()
         }

@@ -19,8 +19,9 @@ class SearchMenuViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupForm()
-        title = "Search"
+        title = "Find a College"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "search:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: UIBarButtonItemStyle.Plain, target: self, action: "clearForm:")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -124,6 +125,13 @@ class SearchMenuViewController: FormViewController {
         
     }
     
+    func clearForm(sender: AnyObject) {
+        form.rows.forEach { (baseRow) -> () in
+            baseRow.baseValue = nil
+            baseRow.updateCell()
+        }
+    }
+    
     func search(sender: AnyObject) {
         var query = [String: String]()
         for (title, value) in form.values() {
@@ -138,6 +146,7 @@ class SearchMenuViewController: FormViewController {
             }
         }
         
+//        Check for an empty query condition
         if Array(query.keys).isEmpty {
             Whisper(messages.emptyQuery, to: self.navigationController!, action: .Present)
             Silent(self.navigationController!, after: 5.0)
