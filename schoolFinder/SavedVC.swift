@@ -11,20 +11,13 @@ import AsyncDisplayKit
 import Whisper
 import RealmSwift
 
-class SavedViewController: UIViewController, ASTableDataSource, ASTableDelegate {
-    var tableView: ASTableView!
+class SavedViewController: SchoolTableViewController {
     var savedSchools: Results<SchoolViewModel>!
-    var messageHelper = MessageHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Saved Schools"
-        tableView = ASTableView(frame: view.frame)
-        tableView.asyncDataSource = self
-        tableView.asyncDelegate = self
-        view.addSubview(tableView)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -35,32 +28,12 @@ class SavedViewController: UIViewController, ASTableDataSource, ASTableDelegate 
             Whisper(messageHelper.emptyMessage, to: self.navigationController!, action: .Present)
             Silent(self.navigationController!, after: 3.0)
         } else {
+            savedSchools.forEach({ (schoolVM) -> () in
+                schoolDataSource = []
+                schoolDataSource.append(schoolVM)
+            })
             tableView.reloadData()
         }
-    }
-    
-    func tableView(tableView: ASTableView, nodeForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
-        if let schoolAtIndexPath = savedSchools?[indexPath.row] {
-            return SchoolNode(result: schoolAtIndexPath)
-        } else {
-            return ASCellNode()
-        }
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard savedSchools?.count != nil else {
-            return 0
-        }
-        
-        return savedSchools!.count
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let selectedSchool = savedSchools[indexPath.row]
-        let selectedSchoolController = SchoolViewController(schoolID: selectedSchool.ID)
-        
-        self.navigationController?.pushViewController(selectedSchoolController, animated: true)
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {

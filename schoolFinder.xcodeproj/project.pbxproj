@@ -20,6 +20,7 @@
 		312EB5171C775F9900426543 /* SearchPassbackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5161C775F9900426543 /* SearchPassbackProtocol.swift */; };
 		312EB5191C77655700426543 /* SaveCollegeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5181C77655700426543 /* SaveCollegeActivity.swift */; };
 		312EB5241C7BBAB100426543 /* NetConnectedness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB5231C7BBAB100426543 /* NetConnectedness.swift */; };
+		312EB53B1C7E429500426543 /* SchoolTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EB53A1C7E429500426543 /* SchoolTableVC.swift */; };
 		3191A7A31C69771D00165E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A7A21C69771D00165E34 /* AppDelegate.swift */; };
 		3191A7AA1C69771D00165E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3191A7A91C69771D00165E34 /* Assets.xcassets */; };
 		3191A7AD1C69771D00165E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3191A7AB1C69771D00165E34 /* LaunchScreen.storyboard */; };
@@ -75,6 +76,7 @@
 		312EB5161C775F9900426543 /* SearchPassbackProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPassbackProtocol.swift; sourceTree = "<group>"; };
 		312EB5181C77655700426543 /* SaveCollegeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCollegeActivity.swift; sourceTree = "<group>"; };
 		312EB5231C7BBAB100426543 /* NetConnectedness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetConnectedness.swift; sourceTree = "<group>"; };
+		312EB53A1C7E429500426543 /* SchoolTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTableVC.swift; sourceTree = "<group>"; };
 		3191A79F1C69771D00165E34 /* CollegeScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3191A7A21C69771D00165E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3191A7A91C69771D00165E34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -187,7 +189,6 @@
 			children = (
 				3191A7D41C69796D00165E34 /* BrowseVC.swift */,
 				3191A7F31C6E94A700165E34 /* SearchMenuVC.swift */,
-				3191A7D21C69790600165E34 /* SavedVC.swift */,
 				3191A7F11C6E910800165E34 /* SettingsVC.swift */,
 			);
 			name = TabbedControllers;
@@ -268,7 +269,9 @@
 				312EB4FB1C72654C00426543 /* SchoolVC.swift */,
 				312EB4FF1C7376FB00426543 /* SchoolVC-Data.swift */,
 				312EB5011C73770500426543 /* SchoolVC-Table.swift */,
+				3191A7D21C69790600165E34 /* SavedVC.swift */,
 				3191A7FA1C6ECB5B00165E34 /* QueryVC.swift */,
+				312EB53A1C7E429500426543 /* SchoolTableVC.swift */,
 				3191A7F51C6E94AC00165E34 /* SubViewControllers */,
 			);
 			name = ViewControllers;
@@ -499,6 +502,7 @@
 				3191A7A31C69771D00165E34 /* AppDelegate.swift in Sources */,
 				312EB5241C7BBAB100426543 /* NetConnectedness.swift in Sources */,
 				312EB5021C73770500426543 /* SchoolVC-Table.swift in Sources */,
+				312EB53B1C7E429500426543 /* SchoolTableVC.swift in Sources */,
 				3191A7DF1C6980B100165E34 /* DataResponse.swift in Sources */,
 				3191A7FB1C6ECB5B00165E34 /* QueryVC.swift in Sources */,
 			);
