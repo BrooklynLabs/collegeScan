@@ -28,10 +28,7 @@ class SavedViewController: SchoolTableViewController {
             Whisper(messageHelper.emptyMessage, to: self.navigationController!, action: .Present)
             Silent(self.navigationController!, after: 3.0)
         } else {
-            savedSchools.forEach({ (schoolVM) -> () in
-                schoolDataSource = []
-                schoolDataSource.append(schoolVM)
-            })
+            schoolDataSource = savedSchools.map({ $0 })
             tableView.reloadData()
         }
     }
@@ -43,6 +40,7 @@ class SavedViewController: SchoolTableViewController {
                 let realm = try! Realm()
                 try realm.write({ () -> Void in
                     realm.delete(schoolToDelete)
+                    self.schoolDataSource.removeAtIndex(indexPath.row)
                 })
                 tableView.reloadData()
             } catch let error as NSError {
