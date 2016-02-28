@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3191A79E1C69771D00165E34"
-               BuildableName = "schoolFinder.app"
+               BuildableName = "CollegeScan.app"
                BlueprintName = "schoolFinder"
                ReferencedContainer = "container:schoolFinder.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3191A79E1C69771D00165E34"
-            BuildableName = "schoolFinder.app"
+            BuildableName = "CollegeScan.app"
             BlueprintName = "schoolFinder"
             ReferencedContainer = "container:schoolFinder.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3191A79E1C69771D00165E34"
-            BuildableName = "schoolFinder.app"
+            BuildableName = "CollegeScan.app"
             BlueprintName = "schoolFinder"
             ReferencedContainer = "container:schoolFinder.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3191A79E1C69771D00165E34"
-            BuildableName = "schoolFinder.app"
+            BuildableName = "CollegeScan.app"
             BlueprintName = "schoolFinder"
             ReferencedContainer = "container:schoolFinder.xcodeproj">
          </BuildableReference>

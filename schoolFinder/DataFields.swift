@@ -101,9 +101,9 @@ struct DataFields {
         return exportProperties
     }
 
-    func print_all_properties_with_query(query: [String: String]) -> [String: String] {
+    func print_all_properties_for_query() -> [String: String] {
         var propertiesExport = ["fields": self.print_all_properties()]
-        query.forEach { propertiesExport[$0] = $1 }
+        propertiesExport["api_key"] = api_key
         
         return propertiesExport
     }
