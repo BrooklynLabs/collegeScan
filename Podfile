@@ -13,6 +13,7 @@ target 'schoolFinder' do
     pod 'Eureka', '~> 1.3'
     pod 'BTNavigationDropdownMenu'
     pod 'RealmSwift'
+    pod 'pop'
 end
 
 target 'schoolFinderTests' do

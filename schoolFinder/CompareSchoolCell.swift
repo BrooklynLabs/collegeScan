@@ -26,30 +26,39 @@ class CompareSchoolCell: ASCellNode {
     
     override func layoutSpecThatFits(constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        let compareHorizontalSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.Horizontal, spacing: 8.0, justifyContent: ASStackLayoutJustifyContent.SpaceBetween, alignItems: ASStackLayoutAlignItems.BaselineFirst, children: [firstValueNode, secondValueNode])
+        let horizontalStackSpec1 = ASStackLayoutSpec(direction: ASStackLayoutDirection.Vertical, spacing: 0.0, justifyContent: ASStackLayoutJustifyContent.Center, alignItems: ASStackLayoutAlignItems.Center, children: [firstValueNode])
+        horizontalStackSpec1.flexGrow = true
+
+        let horizontalStackSpec2 = ASStackLayoutSpec(direction: ASStackLayoutDirection.Vertical, spacing: 0.0, justifyContent: ASStackLayoutJustifyContent.Center, alignItems: ASStackLayoutAlignItems.Center, children: [secondValueNode])
+        horizontalStackSpec2.flexGrow = true
         
-        let verticalSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.Vertical, spacing: 8.0, justifyContent: ASStackLayoutJustifyContent.SpaceBetween, alignItems: ASStackLayoutAlignItems.BaselineFirst, children: [compareHorizontalSpec, labelNode])
+        let compareHorizontalSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.Horizontal, spacing: 8.0, justifyContent: ASStackLayoutJustifyContent.SpaceAround, alignItems: ASStackLayoutAlignItems.Center, children: [horizontalStackSpec1, horizontalStackSpec2])
+        compareHorizontalSpec.flexGrow = true
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5.0, left: 10.0, bottom: 5.0, right: 10.0), child: verticalSpec)
+        let labelSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.Vertical, spacing: 0.0, justifyContent: ASStackLayoutJustifyContent.Center, alignItems: ASStackLayoutAlignItems.Center, children: [labelNode])
+        
+        let verticalSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.Vertical, spacing: 8.0, justifyContent: ASStackLayoutJustifyContent.Center, alignItems: ASStackLayoutAlignItems.Stretch, children: [labelSpec, compareHorizontalSpec])
+        verticalSpec.flexGrow = true
+        
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10.0, left: 0.0, bottom: 10.0, right: 0.0), child: verticalSpec)
     }
     
     func setupProfileNode(label: String, value1: String, value2: String) {
-        labelNode.attributedString = NSAttributedString(string: label, attributes: [
-            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline),
+        labelNode.attributedString = NSAttributedString(string: label.lowercaseString, attributes: [
+            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline),
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
             ])
         labelNode.placeholderColor = UIColor.blackColor()
         
         firstValueNode.attributedString = NSAttributedString(string: value1, attributes: [
-            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
             ])
         firstValueNode.placeholderColor = UIColor.blackColor()
         
         secondValueNode.attributedString = NSAttributedString(string: value2, attributes: [
-            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
             ])
         secondValueNode.placeholderColor = UIColor.blackColor()
-
         
         addSubnode(labelNode)
         addSubnode(firstValueNode)

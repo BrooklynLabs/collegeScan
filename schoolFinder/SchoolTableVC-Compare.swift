@@ -50,7 +50,7 @@ extension SchoolTableViewController {
         case 1:
             calculatedFrame = CGRect(x: (frameWidth + buttonMargin * 2.0), y: maxY, width: frameWidth, height: frameHeight).insetBy(dx: 5.0, dy: 5.0)
         case 2:
-            calculatedFrame = CGRect(x: (view.frame.width - frameWidth)/2.0, y: navigationController!.navigationBar.frame.height + buttonMargin * 2.0, width: frameWidth, height: frameHeight).insetBy(dx: 5.0, dy: 5.0)
+            calculatedFrame = CGRect(x: (view.frame.width - frameWidth)/2.0, y: navigationController!.navigationBar.frame.height + buttonMargin * 2.0, width: frameWidth, height: 50.0).insetBy(dx: 5.0, dy: 5.0)
         default:
             break
         }

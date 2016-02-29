@@ -9,9 +9,9 @@
 import Foundation
 import ObjectMapper
 
-class QueryResult: Mappable {
+class QueryResult: NSObject, Mappable {
     
-    var ID: Int?
+    var ID: String?
     var NAME: String?
     var CITY: String?
     var STATE: String?
@@ -72,61 +72,68 @@ class QueryResult: Mappable {
     }
     
     func mapping(map: Map) {
-        ID <- map["id"]
+        ID <- (map["id"], FieldTransform())
         NAME <- map["school.name", nested: false]
         CITY <- map["school.city", nested: false]
         STATE <- map["school.state", nested: false]
-        ZIP_CODE <- map["school.zip", nested: false]
+        ZIP_CODE <- (map["school.zip", nested: false], FieldTransform())
         SCHOOL_URL <- map["school.school_url", nested: false]
         OWNERSHIP <- map["school.ownership", nested: false]
-        LOCALE <- map["school.locale", nested: false]
-        REGION_ID <- map["school.region_id", nested: false]
-        RELIGIOUS <- map["school.religious_affiliation", nested: false]
-        OPERATING <- map["school.operating", nested: false]
-        SIZE <- map["2013.student.size", nested: false]
+        LOCALE <- (map["school.locale", nested: false], RegionTransform())
+        REGION_ID <- (map["school.region_id", nested: false], RegionTransform())
+        RELIGIOUS <- (map["school.religious_affiliation", nested: false], SizeReligionTransform())
+        CARNEGIE_BASIC <- (map["school.carnegie_basic", nested: false], FieldTransform())
+        CARNEGIE_SIZE_SETTING <- (map["school.carnegie_size_setting", nested: false], SizeReligionTransform())
+        OPERATING <- (map["school.operating", nested: false], YesNoTransform())
+        SIZE <- (map["2013.student.size", nested: false], FieldTransform())
         PARENTS_EDUCATION_LEVEL <- map["2013.student.parents_education_level", nested: false]
         SHARE_FIRSTGENERATION <- map["2013.student.share_firstgeneration", nested: false]
-        ONLINE_ONLY <- map["school.online_only", nested: false]
-        WOMEN_ONLY <- map["school.women_only", nested: false]
-        MEN_ONLY <- map["school.men_only", nested: false]
-        MINORITY_SERVING <- map["school.minority_serving", nested: false]
-        PREDOMINANT_DEGREE <- map["school.degrees_awarded.predominant", nested: false]
-        HIGHEST_DEGREE <- map["school.degrees_awarded.highest", nested: false]
-        UNDER_INVESTIGATION <- map["school.under_investigation", nested: false]
+        ONLINE_ONLY <- (map["school.online_only", nested: false], YesNoTransform())
+        WOMEN_ONLY <- (map["school.women_only", nested: false], YesNoTransform())
+        MEN_ONLY <- (map["school.men_only", nested: false], YesNoTransform())
+        MINORITY_SERVING <- (map["school.minority_serving", nested: false], YesNoTransform())
+        PREDOMINANT_DEGREE <- (map["school.degrees_awarded.predominant", nested: false], DegreeTransform())
+        HIGHEST_DEGREE <- (map["school.degrees_awarded.highest", nested: false], DegreeTransform())
+        UNDER_INVESTIGATION <- (map["school.under_investigation", nested: false], YesNoTransform())
         
         
-        NET_PRICE <- map["2013.cost.avg_net_price.overall", nested: false]
-        NET_PRICE_BY_INCOME <- map["2013.cost.net_price", nested: false]
-        COMPLETION_RATE <- map["2013.completion.rate_suppressed.overall", nested: false]
-        RETENTION_RATE <- map["2013.student.retention_rate", nested: false]
-        REPAYMENT_RATE <- map["2013.repayment.3_yr_repayment_suppressed.overall", nested: false]
-        AVERAGE_TOTAL_DEBT <- map["2013.aid.median_debt_suppressed.completers.overall", nested: false]
-        MONTHLY_LOAN_PAYMENT <- map["2013.aid.median_debt_suppressed.completers.monthly_payments", nested: false]
-        AID_PERCENTAGE <- map["2013.aid.federal_loan_rate", nested: false]
-        PELL_PERCENTAGE <- map["2013.aid.pell_grant_rate", nested: false]
-        MEDIAN_EARNINGS <- map["2011.earnings.10_yrs_after_entry.median", nested: false]
-        EARNINGS_GT_25K <- map["2011.earnings.6_yrs_after_entry.percent_greater_than_25000", nested: false]
+        NET_PRICE <- (map["2013.cost.avg_net_price.overall", nested: false], DollarTransform())
+        NET_PRICE_BY_INCOME <- (map["2013.cost.net_price", nested: false], DollarTransform())
+        COMPLETION_RATE <- (map["2013.completion.rate_suppressed.overall", nested: false], PercentTransform())
+        RETENTION_RATE <- (map["2013.student.retention_rate", nested: false], PercentTransform())
+        REPAYMENT_RATE <- (map["2013.repayment.3_yr_repayment_suppressed.overall", nested: false], PercentTransform())
+        AVERAGE_TOTAL_DEBT <- (map["2013.aid.median_debt_suppressed.completers.overall", nested: false], DollarTransform())
+        MONTHLY_LOAN_PAYMENT <- (map["2013.aid.median_debt_suppressed.completers.monthly_payments", nested: false], DollarTransform())
+        AID_PERCENTAGE <- (map["2013.aid.federal_loan_rate", nested: false], PercentTransform())
+        PELL_PERCENTAGE <- (map["2013.aid.pell_grant_rate", nested: false], PercentTransform())
+        MEDIAN_EARNINGS <- (map["2011.earnings.10_yrs_after_entry.median", nested: false], DollarTransform())
+        EARNINGS_GT_25K <- (map["2011.earnings.6_yrs_after_entry.percent_greater_than_25000", nested: false], PercentTransform())
         PROGRAM_PERCENTAGE <- map["2013.academics.program_percentage", nested: false]
         PROGRAM_OFFERED <- map["2013.academics.program", nested: false]
         DEGREE_OFFERED <- map["2013.academics.program_available", nested: false]
-        PART_TIME_SHARE <- map["2013.student.part_time_share", nested: false]
-        FEMALE_SHARE <- map["2013.student.demographics.female_share", nested: false]
+        PART_TIME_SHARE <- (map["2013.student.part_time_share", nested: false], PercentTransform())
+        FEMALE_SHARE <- (map["2013.student.demographics.female_share", nested: false], PercentTransform())
         RACE_ETHNICITY <- map["2013.student.demographics.race_ethnicity", nested: false]
-        AGE_ENTRY <- map["2013.student.demographics.age_entry", nested: false]
-        ACT_25TH_PCTILE <- map["2013.admissions.act_scores.25th_percentile.cumulative", nested: false]
-        ACT_75TH_PCTILE <- map["2013.admissions.act_scores.75th_percentile.cumulative", nested: false]
-        ACT_MIDPOINT <- map["2013.admissions.act_scores.midpoint.cumulative", nested: false]
-        SAT_CUMULATIVE_AVERAGE <- map["2013.admissions.sat_scores.average.overall", nested: false]
-        SAT_READING_25TH_PCTILE <- map["2013.admissions.sat_scores.25th_percentile.critical_reading", nested: false]
-        SAT_READING_75TH_PCTILE <- map["2013.admissions.sat_scores.75th_percentile.critical_reading", nested: false]
-        SAT_READING_MIDPOINT <- map["2013.admissions.sat_scores.midpoint.critical_reading", nested: false]
-        SAT_MATH_25TH_PCTILE <- map["2013.admissions.sat_scores.25th_percentile.math", nested: false]
-        SAT_MATH_75TH_PCTILE <- map["2013.admissions.sat_scores.75th_percentile.math", nested: false]
-        SAT_MATH_MIDPOINT <- map["2013.admissions.sat_scores.midpoint.math", nested: false]
-        SAT_WRITING_25TH_PCTILE <- map["2013.admissions.sat_scores.25th_percentile.writing", nested: false]
-        SAT_WRITING_75TH_PCTILE <- map["2013.admissions.sat_scores.75th_percentile.writing", nested: false]
-        SAT_WRITING_MIDPOINT <- map["2013.admissions.sat_scores.midpoint.writing", nested: false]
+        AGE_ENTRY <- (map["2013.student.demographics.age_entry", nested: false], FieldTransform())
+        ACT_25TH_PCTILE <- (map["2013.admissions.act_scores.25th_percentile.cumulative", nested: false], FieldTransform())
+        ACT_75TH_PCTILE <- (map["2013.admissions.act_scores.75th_percentile.cumulative", nested: false], FieldTransform())
+        ACT_MIDPOINT <- (map["2013.admissions.act_scores.midpoint.cumulative", nested: false], FieldTransform())
+        SAT_CUMULATIVE_AVERAGE <- (map["2013.admissions.sat_scores.average.overall", nested: false], FieldTransform())
+        SAT_READING_25TH_PCTILE <- (map["2013.admissions.sat_scores.25th_percentile.critical_reading", nested: false], FieldTransform())
+        SAT_READING_75TH_PCTILE <- (map["2013.admissions.sat_scores.75th_percentile.critical_reading", nested: false], FieldTransform())
+        SAT_READING_MIDPOINT <- (map["2013.admissions.sat_scores.midpoint.critical_reading", nested: false], FieldTransform())
+        SAT_MATH_25TH_PCTILE <- (map["2013.admissions.sat_scores.25th_percentile.math", nested: false], FieldTransform())
+        SAT_MATH_75TH_PCTILE <- (map["2013.admissions.sat_scores.75th_percentile.math", nested: false], FieldTransform())
+        SAT_MATH_MIDPOINT <- (map["2013.admissions.sat_scores.midpoint.math", nested: false], FieldTransform())
+        SAT_WRITING_25TH_PCTILE <- (map["2013.admissions.sat_scores.25th_percentile.writing", nested: false], FieldTransform())
+        SAT_WRITING_75TH_PCTILE <- (map["2013.admissions.sat_scores.75th_percentile.writing", nested: false], FieldTransform())
+        SAT_WRITING_MIDPOINT <- (map["2013.admissions.sat_scores.midpoint.writing", nested: false], FieldTransform())
         NET_PRICE_CALC_URL <- map["school.price_calculator_url", nested: false]
     }
+    
+    func print_value(label: String) -> String {
+        return self.valueForKey(label) != nil ? self.valueForKey(label) as! String : "unknown"
+    }
+
     
 }

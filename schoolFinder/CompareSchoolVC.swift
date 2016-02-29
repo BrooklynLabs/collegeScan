@@ -22,11 +22,12 @@ class CompareSchoolViewController: UIViewController, ASTableDataSource, ASTableD
     
     var firstSchoolID: String
     var secondSchoolID: String
-    var firstSchool: Result!
-    var secondSchool: Result!
+    var firstSchool: QueryResult!
+    var secondSchool: QueryResult!
     
     var schoolTable: ASTableView!
     var schoolPropertyKey: [String] = []
+    var headerTableHeight: CGFloat = 55.0
     
     var connectedToInternet: Bool = NetConnectedNess.isConnectedToNetwork()
     
@@ -35,9 +36,7 @@ class CompareSchoolViewController: UIViewController, ASTableDataSource, ASTableD
         secondSchoolID = schoolID2
         super.init(nibName: nil, bundle: nil)
         
-        title = "School"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: UIBarButtonItemStyle.Plain, target: self, action: "openOptionsMenu:")
-        
+        title = "Comparison"
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -52,6 +51,7 @@ class CompareSchoolViewController: UIViewController, ASTableDataSource, ASTableD
         if NetConnectedNess.isConnectedToNetwork() {
             Whisper(messageHelper.downloadingMessage, to: self.navigationController!, action: .Present)
             prepareData({ (downloaded) -> Void in
+                self.reloadTableHeader()
                 self.schoolTable.reloadData()
                 Silent(self.navigationController!)
             })
@@ -72,11 +72,10 @@ class CompareSchoolViewController: UIViewController, ASTableDataSource, ASTableD
     }
     
     func prepareData(completion: (downloaded: Bool) -> Void) {
-        Alamofire.request(.GET, apiURL, parameters: queriedParams).responseObject { (response: Response<DataResponse, NSError>) -> Void in
+        Alamofire.request(.GET, apiURL, parameters: queriedParams).responseObject { (response: Response<QueryResponse, NSError>) -> Void in
             if let successResponse = response.result.value {
-                self.firstSchool = successResponse.results!.first as Result!
-                self.secondSchool  = successResponse.results![1] as Result!
-                
+                self.firstSchool = successResponse.results!.first as QueryResult!
+                self.secondSchool  = successResponse.results![1] as QueryResult!
                 let mirroredFirstSchool = Mirror(reflecting: self.firstSchool)
                 
                 for (_, attr) in mirroredFirstSchool.children.enumerate() {
@@ -97,6 +96,7 @@ class CompareSchoolViewController: UIViewController, ASTableDataSource, ASTableD
         schoolTable = ASTableView(frame: view.bounds, style: UITableViewStyle.Plain, asyncDataFetching: true)
         schoolTable.asyncDataSource = self
         schoolTable.asyncDelegate = self
+        schoolTable.separatorColor = UIColor.flatPurpleColor()
         view.addSubview(schoolTable)
     }
     
@@ -113,5 +113,55 @@ class CompareSchoolViewController: UIViewController, ASTableDataSource, ASTableD
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        schoolTable.deselectRowAtIndexPath(indexPath, animated: true)
+        let selectedKey = schoolPropertyKey[indexPath.row] as String!
+        let value1Value = firstSchool.print_value(selectedKey)
+        let value2Value = secondSchool.print_value(selectedKey)
+        
+        let postedMessage = "\(firstSchool.print_value("NAME")): \(value1Value) \n\n \(secondSchool.print_value("NAME")): \(value2Value)"
+        
+        let alertController = UIAlertController(title: selectedKey, message: postedMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertDismiss = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Destructive, handler: nil)
+        alertController.addAction(alertDismiss)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: headerTableHeight))
+        let schoolHeader1 = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width/2, height: headerTableHeight))
+        let schoolHeader2 = UILabel(frame: CGRect(x: schoolHeader1.frame.maxX, y: 0, width: view.bounds.width/2, height: headerTableHeight))
+        
+        schoolHeader1.text = "First School"
+        schoolHeader2.text = "Second School"
+        schoolHeader1.textAlignment = .Center
+        schoolHeader2.textAlignment = .Center
+        schoolHeader1.lineBreakMode = .ByWordWrapping
+        schoolHeader2.lineBreakMode = .ByWordWrapping
+        schoolHeader1.textColor = UIColor.whiteColor()
+        schoolHeader2.textColor = UIColor.whiteColor()
+        
+        headerView.addSubview(schoolHeader1)
+        headerView.addSubview(schoolHeader2)
+        headerView.backgroundColor = UIColor.flatPurpleColor()
+        
+        return headerView
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerTableHeight
+    }
+    
+    func reloadTableHeader() {
+        if firstSchool != nil && secondSchool != nil {
+            let headerView = schoolTable.headerViewForSection(0)
+            let schoolHeader1 = headerView?.subviews.first as? UILabel
+            let schoolHeader2 = headerView?.subviews[1] as? UILabel
+            
+            schoolHeader1?.text = firstSchool.print_value("name")
+            schoolHeader2?.text = secondSchool.print_value("name")
+        }
+    }
     
 }

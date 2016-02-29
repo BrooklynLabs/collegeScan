@@ -61,7 +61,6 @@ class SchoolTableViewController: UIViewController, ASTableViewDataSource, ASTabl
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let selectedSchool = schoolDataSource[indexPath.row]
         let selectedSchoolController = SchoolViewController(schoolID: selectedSchool.ID)
-        print(selectedSchool)
         self.navigationController?.pushViewController(selectedSchoolController, animated: true)
     }
 
