@@ -10,7 +10,7 @@ target 'schoolFinder' do
     pod 'ChameleonFramework/Swift'
     pod 'FBSDKCoreKit'
     pod 'AsyncDisplayKit'
-    pod 'Eureka', '~> 1.3'
+    pod 'Eureka'
     pod 'BTNavigationDropdownMenu'
     pod 'RealmSwift'
     pod 'pop'
